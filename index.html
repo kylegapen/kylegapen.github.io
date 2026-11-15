@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kyle Gapen | Product Manager</title>
+<meta name="description" content="Kyle Gapen: Army veteran and former police FTO moving into product management. CSPO, Scrum Master, MBA candidate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08090b; --panel:#111317; --panel2:#171a1f; --line:#23272e; --line2:#323843;
+    --text:#eceef1; --muted:#949ba6; --accent:#e5383b; --accent2:#ff6b6b; --green:#2ecc71;
+    --radius:16px; --max:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  svg{display:block;aspect-ratio:1/1;height:auto;flex:none}
+  ::selection{background:var(--accent);color:#fff}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px;position:relative;z-index:2}
+  .mono{font-family:"JetBrains Mono",monospace;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2)}
+
+  /* Background layers */
+  .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:56px 56px;opacity:.28;
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 80%)}
+  .glow{position:absolute;z-index:1;pointer-events:none;border-radius:50%;filter:blur(90px)}
+  .glow.g1{width:520px;height:520px;background:rgba(229,56,59,.22);top:-140px;right:-120px}
+  .glow.g2{width:380px;height:380px;background:rgba(229,56,59,.10);top:520px;left:-180px}
+  .noise{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:60;box-shadow:0 0 10px var(--accent)}
+
+  /* Nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(8,9,11,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.01em}
+  .badge{position:relative;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(140deg,var(--accent2),var(--accent));color:#fff;font-size:.82rem;font-weight:800;box-shadow:0 6px 20px rgba(229,56,59,.35)}
+  .logo small{display:block;font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--muted);font-weight:500;letter-spacing:.1em}
+  .links{display:flex;gap:4px;font-size:.9rem;color:var(--muted)}
+  .links a{padding:8px 14px;border-radius:8px;transition:.2s}
+  .links a:hover{color:var(--text);background:var(--panel)}
+  .links a.active{color:var(--text);background:var(--panel2);box-shadow:inset 0 0 0 1px var(--line)}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:11px;font-weight:600;font-size:.92rem;transition:.25s;position:relative}
+  .btn svg{width:16px;height:16px}
+  .btn.primary{background:var(--accent);color:#fff;box-shadow:0 8px 24px rgba(229,56,59,.28),inset 0 1px 0 rgba(255,255,255,.18)}
+  .btn.primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(229,56,59,.4)}
+  .btn.ghost{border:1px solid var(--line2);color:var(--text);background:rgba(255,255,255,.02)}
+  .btn.ghost:hover{border-color:var(--muted);transform:translateY(-2px)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:9px;width:40px;height:40px;color:var(--text);cursor:pointer}
+  .menu-btn svg{margin:auto;width:20px}
+
+  /* Hero */
+  .hero{padding:96px 0 70px;display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center}
+  .status{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border:1px solid var(--line2);border-radius:99px;font-size:.82rem;color:var(--muted);margin-bottom:26px;background:rgba(17,19,23,.7)}
+  .status i{position:relative;width:8px;height:8px;border-radius:50%;background:var(--green)}
+  .status i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--green);animation:ping 1.8s infinite}
+  @keyframes ping{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.8)}}
+  h1{font-size:clamp(2.4rem,5.4vw,3.9rem);line-height:1.05;font-weight:900;letter-spacing:-.035em;margin-bottom:22px}
+  .rot{display:inline-block;background:linear-gradient(100deg,var(--accent2),var(--accent) 60%);-webkit-background-clip:text;background-clip:text;color:transparent;border-right:3px solid var(--accent);padding-right:4px;animation:caret .8s steps(1) infinite}
+  @keyframes caret{50%{border-color:transparent}}
+  .lead{color:var(--muted);font-size:1.1rem;max-width:560px;margin-bottom:30px}
+  .lead b{color:var(--text);font-weight:600}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px}
+  .trust{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+  .trust li{display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--muted);padding:6px 12px;border-radius:8px;background:var(--panel);border:1px solid var(--line)}
+  .trust svg{width:14px;color:var(--accent)}
+
+  /* Terminal / HUD card */
+  .hud{position:relative}
+  .hud::before,.hud::after{content:"";position:absolute;width:26px;height:26px;border:2px solid var(--accent);z-index:3}
+  .hud::before{top:-10px;left:-10px;border-right:0;border-bottom:0}
+  .hud::after{bottom:-10px;right:-10px;border-left:0;border-top:0}
+  .term{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line2);border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(229,56,59,.05)}
+  .term .bar{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.25)}
+  .term .bar b{width:11px;height:11px;border-radius:50%;background:#2c3038}
+  .term .bar b:first-child{background:var(--accent)}
+  .term .bar span{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--muted)}
+  .term pre{padding:22px;font-family:"JetBrains Mono",monospace;font-size:.82rem;color:var(--muted);white-space:pre-wrap;line-height:1.9;min-height:290px}
+  .name{display:inline-block;font-family:Inter,sans-serif;font-size:1.7rem;font-weight:800;letter-spacing:-.02em;color:var(--text);line-height:1.2;margin-bottom:-6px} .k{color:var(--accent2)} .v{color:var(--text)} .ok{color:var(--green)}
+  .cursor{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:-2px;animation:caret 1s steps(1) infinite}
+  .hud-tag{position:absolute;bottom:-16px;left:24px;z-index:4;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.12em;background:var(--bg);border:1px solid var(--line2);padding:5px 10px;border-radius:6px;color:var(--muted)}
+
+  /* Marquee */
+  .marquee{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(17,19,23,.6);overflow:hidden;margin-bottom:80px}
+  .marquee .track{display:flex;gap:46px;width:max-content;padding:18px 0;animation:scroll 38s linear infinite}
+  .marquee span{display:flex;align-items:center;gap:46px;font-weight:700;font-size:.95rem;color:var(--muted);white-space:nowrap;letter-spacing:.02em}
+  .marquee span::after{content:"";width:7px;height:7px;transform:rotate(45deg);background:var(--accent)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:110px}
+  .stat{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 20px;overflow:hidden;transition:.3s}
+  .stat:hover{border-color:var(--line2);transform:translateY(-3px)}
+  .stat::before{content:"";position:absolute;left:0;top:0;height:2px;width:36px;background:var(--accent)}
+  .stat .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:rgba(229,56,59,.1);color:var(--accent2);margin-bottom:14px}
+  .stat .ic svg{width:18px}
+  .stat b{display:block;font-size:2rem;font-weight:900;letter-spacing:-.03em;line-height:1.1}
+  .stat>span{font-size:.82rem;color:var(--muted)}
+
+  /* Sections */
+  section{padding:0 0 110px;position:relative}
+  .sec-head{position:relative;margin-bottom:40px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:900;letter-spacing:-.03em;margin-top:8px;line-height:1.1}
+  .sec-head p{color:var(--muted);max-width:380px;font-size:.95rem}
+  .sec-num{position:absolute;right:0;top:-46px;font-size:7rem;font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:1px var(--line);pointer-events:none;z-index:-1}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .panel{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:border-color .3s}
+  .panel:hover{border-color:var(--line2)}
+  .panel h3{font-size:1.12rem;margin-bottom:12px;letter-spacing:-.01em}
+  .panel p,.panel li{color:var(--muted);font-size:.95rem}
+  .panel ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .panel ul li{position:relative;padding-left:20px}
+  .panel ul li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;transform:rotate(45deg);border:1.5px solid var(--accent)}
+  .facts{display:grid;grid-template-columns:130px 1fr;gap:0;font-size:.93rem}
+  .facts dt,.facts dd{padding:12px 0;border-bottom:1px dashed var(--line)}
+  .facts dt{color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding-top:14px}
+  .facts dd{color:var(--text)}
+  .facts dt:last-of-type,.facts dd:last-of-type{border-bottom:0}
+  .quote{margin-top:22px;padding:18px 20px;border-left:3px solid var(--accent);background:rgba(229,56,59,.06);border-radius:0 10px 10px 0;color:var(--text);font-size:1rem;font-weight:500}
+
+  /* Process */
+  .process{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;overflow:hidden;transition:.3s}
+  .step:hover{transform:translateY(-4px);border-color:rgba(229,56,59,.45)}
+  .step .n{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--accent2);letter-spacing:.12em}
+  .step h3{font-size:1.2rem;margin:10px 0 8px}
+  .step p{color:var(--muted);font-size:.9rem}
+  .step .pm{display:inline-block;font-size:.76rem;font-weight:600;color:var(--accent2);background:rgba(229,56,59,.1);border:1px solid rgba(229,56,59,.25);padding:3px 9px;border-radius:6px;margin-bottom:10px}
+  .step .ic{position:absolute;right:16px;top:18px;color:var(--line2);transition:.3s}
+  .step:hover .ic{color:var(--accent)}
+  .step .ic svg{width:30px}
+  .step:not(:nth-child(3n))::after{content:"";position:absolute;right:-1px;top:50%;width:10px;height:10px;border-top:1.5px solid var(--line2);border-right:1.5px solid var(--line2);transform:translate(50%,-50%) rotate(45deg);background:var(--bg)}
+
+  /* Timeline */
+  .timeline{position:relative;padding-left:42px}
+  .timeline::before{content:"";position:absolute;left:13px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--accent),var(--line) 40%)}
+  .job{position:relative;margin-bottom:22px}
+  .job::before{content:attr(data-n);position:absolute;left:-42px;top:26px;width:28px;height:28px;border-radius:8px;background:var(--bg);border:1.5px solid var(--accent);color:var(--accent2);font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;display:grid;place-items:center}
+  .job.current::before{background:var(--accent);color:#fff;box-shadow:0 0 0 5px rgba(229,56,59,.15)}
+  .job .top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+  .job .org{display:flex;align-items:center;gap:8px;color:var(--accent2);font-weight:600;font-size:.92rem;margin-bottom:16px}
+  .job .org svg{width:15px}
+  .date{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--muted);padding:4px 10px;border:1px solid var(--line);border-radius:6px;white-space:nowrap}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+  .chips span{font-size:.74rem;padding:4px 10px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}
+
+  /* Work cards */
+  .work{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .wcard{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);display:flex;flex-direction:column;overflow:hidden;transition:transform .3s,border-color .3s}
+  .wcard:hover{transform:translateY(-4px);border-color:var(--line2)}
+  .wcard::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;
+    background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(229,56,59,.10),transparent 45%)}
+  .wcard:hover::before{opacity:1}
+  .visual{position:relative;height:172px;border-bottom:1px solid var(--line);overflow:hidden;
+    background:radial-gradient(circle at 70% 30%,rgba(229,56,59,.22),transparent 55%),
+               repeating-linear-gradient(135deg,transparent 0 14px,rgba(255,255,255,.018) 14px 15px),var(--panel2)}
+  .body{padding:26px;display:flex;flex-direction:column;flex:1}
+  .metric{display:inline-flex;align-items:center;gap:8px;font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:10px}
+  .metric i{width:7px;height:7px;border-radius:50%;background:currentColor}
+  .metric.live{color:var(--green)}
+  .wcard h3{font-size:1.35rem;margin-bottom:16px;letter-spacing:-.02em}
+  .wcard dl{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;flex:1}
+  .wcard dt{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text);opacity:.8}
+  .wcard dd{color:var(--muted);font-size:.92rem}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+  .tags span{font-size:.74rem;padding:4px 10px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}
+
+  /* Phone mockup */
+  .phone{position:absolute;left:50%;bottom:-70px;transform:translateX(-50%) rotate(-6deg);width:180px;height:340px;border-radius:30px;background:#050506;border:6px solid #1d2026;box-shadow:0 30px 60px rgba(0,0,0,.6);padding:16px 12px;transition:transform .5s}
+  .wcard:hover .phone{transform:translateX(-50%) rotate(-2deg) translateY(-10px)}
+  .phone .notch{width:56px;height:6px;border-radius:9px;background:#1d2026;margin:0 auto 14px}
+  .phone .ttl{font-size:.62rem;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+  .phone .h{font-size:.78rem;font-weight:800;margin-bottom:10px}
+  .phone .row{display:flex;justify-content:space-between;align-items:center;font-size:.58rem;color:var(--muted);padding:7px 8px;border-radius:7px;background:#121418;margin-bottom:5px}
+  .phone .row b{color:var(--text);font-weight:600}
+  .phone .bar2{height:5px;border-radius:9px;background:#1d2026;margin:10px 0 5px;overflow:hidden}
+  .phone .bar2 i{display:block;height:100%;width:68%;background:var(--accent)}
+  .phone .cap{font-size:.52rem;color:var(--muted)}
+  .phone2{left:72%;bottom:-110px;width:140px;height:270px;transform:translateX(-50%) rotate(8deg);opacity:.55}
+  .work .phone{bottom:auto;top:16px;transform:translateX(-50%) rotate(-6deg) scale(.55);transform-origin:top center}
+  .work .phone2{top:44px;transform:translateX(-50%) rotate(8deg) scale(.55)}
+  .work .wcard:hover .phone{transform:translateX(-50%) rotate(-2deg) scale(.55) translateY(-8px)}
+  .work .wcard:hover .phone2{transform:translateX(-50%) rotate(10deg) scale(.55) translateY(-6px)}
+  .wcard:hover .phone2{transform:translateX(-50%) rotate(10deg) translateY(-6px)}
+
+  /* Small visuals */
+  .viz{position:absolute;inset:0;display:grid;place-items:center}
+  .fuel{display:flex;align-items:flex-end;gap:10px;height:110px}
+  .fuel i{width:20px;border-radius:5px 5px 2px 2px;background:linear-gradient(var(--accent2),var(--accent));opacity:.85}
+  .lock{position:absolute;right:24px;top:22px;display:flex;align-items:center;gap:8px;font-family:"JetBrains Mono",monospace;font-size:.72rem;padding:7px 11px;border-radius:8px;background:rgba(8,9,11,.8);border:1px solid var(--line2)}
+  .lock svg{width:14px;color:var(--green)}
+  .board{display:grid;grid-template-columns:repeat(3,72px);gap:8px}
+  .board div{height:46px;border-radius:7px;background:rgba(255,255,255,.04);border:1px solid var(--line2);padding:6px}
+  .board div::before{content:"";display:block;height:4px;width:60%;border-radius:4px;background:var(--line2);margin-bottom:5px}
+  .board div::after{content:"";display:block;height:4px;width:85%;border-radius:4px;background:var(--line)}
+  .board div.hi{border-color:var(--accent);background:rgba(229,56,59,.12)}
+  .board div.hi::before{background:var(--accent)}
+
+  .rpt{width:250px;transform:scale(.86);background:rgba(8,9,11,.85);border:1px solid var(--line2);border-radius:10px;padding:12px;font-size:.7rem;box-shadow:0 16px 40px rgba(0,0,0,.5)}
+  .rpt-h{display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:.6rem;letter-spacing:.1em;color:var(--muted);margin-bottom:9px}
+  .rpt-h span{color:var(--accent2)}
+  .rpt-r{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;background:#121418;margin-bottom:5px;color:var(--text)}
+  .rpt-r i{font-style:normal;width:15px;height:15px;border-radius:4px;display:grid;place-items:center;font-size:.6rem;font-weight:800}
+  .rpt-r.ok i{background:rgba(46,204,113,.15);color:var(--green)}
+  .rpt-r.bad{border:1px solid rgba(229,56,59,.5);background:rgba(229,56,59,.1)}
+  .rpt-r.bad i{background:var(--accent);color:#fff}
+  .rpt-r.bad b{margin-left:auto;font-size:.58rem;color:var(--accent2);font-weight:600}
+  .rpt-r.warn{color:#f5b041}
+  .rpt-r.warn i{background:rgba(245,176,65,.15);color:#f5b041}
+  /* Skills */
+  .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .skill .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;margin-bottom:16px;background:linear-gradient(140deg,rgba(229,56,59,.18),rgba(229,56,59,.04));border:1px solid rgba(229,56,59,.25);color:var(--accent2)}
+  .skill .ic svg{width:20px}
+  .edu{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+  .cert{display:flex;align-items:center;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .seal{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1.5px dashed var(--accent);color:var(--accent2);font-family:"JetBrains Mono",monospace;font-size:.62rem;font-weight:700}
+  .cert b{display:block;font-size:.95rem}
+  .cert span{font-size:.82rem;color:var(--muted)}
+
+  /* FAQ */
+  .faq{display:grid;grid-template-columns:1fr 1.6fr;gap:40px}
+  details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 22px;margin-bottom:10px;transition:border-color .3s}
+  details[open]{border-color:var(--line2)}
+  summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 0}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";flex:none;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;background:var(--panel2);border:1px solid var(--line);color:var(--accent);font-size:1.1rem;transition:transform .3s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);padding-bottom:20px;font-size:.95rem}
+
+  /* Contact */
+  .contact{position:relative;overflow:hidden;text-align:center;padding:76px 26px;border:1px solid var(--line2);border-radius:22px;
+    background:radial-gradient(ellipse at 50% 0%,rgba(229,56,59,.28),transparent 60%),var(--panel)}
+  .contact::before{content:"";position:absolute;inset:0;opacity:.35;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:36px 36px;
+    mask-image:radial-gradient(ellipse at center,#000,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,#000,transparent 70%)}
+  .contact>*{position:relative}
+  .contact h2{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;letter-spacing:-.035em;margin:10px 0 14px;line-height:1.05}
+  .contact p{color:var(--muted);margin:0 auto 30px;max-width:460px}
+  .contact .cta{justify-content:center;margin:0}
+  footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.85rem}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .soc{display:flex;gap:8px}
+  .soc a{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;border:1px solid var(--line);transition:.2s}
+  .soc a:hover{border-color:var(--accent);color:var(--accent2)}
+  .soc svg{width:16px}
+  .totop{position:fixed;right:20px;bottom:20px;z-index:40;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--panel2);border:1px solid var(--line2);opacity:0;transform:translateY(10px);transition:.3s}
+  .totop.show{opacity:1;transform:none}
+  .totop:hover{border-color:var(--accent);color:var(--accent2)}
+  .totop svg{width:18px}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+  @media (max-width:960px){
+    .stats{grid-template-columns:repeat(3,1fr)}
+    .process{grid-template-columns:1fr 1fr}
+    .step::after{display:none}
+    .skills{grid-template-columns:1fr 1fr}
+    .work{grid-template-columns:1fr}
+  }
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr;padding-top:60px;gap:48px}
+    .stats{grid-template-columns:1fr 1fr}
+    .stats .stat:last-child{grid-column:span 2}
+    .grid2,.faq,.edu{grid-template-columns:1fr}
+    .faq{gap:10px}
+    .links{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px}
+    .links.open{display:flex}
+    .links a{padding:14px 16px}
+    .menu-btn{display:grid}
+    nav>.btn{display:none}
+    .facts{grid-template-columns:1fr}
+    .facts dt{border-bottom:0;padding-bottom:0}
+    .sec-num{font-size:4.5rem;top:-24px}
+    .process{grid-template-columns:1fr}
+    .skills{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div class="bg-grid"></div>
+<div class="noise"></div>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute;width:0;height:0">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 12l6 6 6-6M5 21h14"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.02c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3Z"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-7 7-5-5 7-7Z"/><circle cx="15" cy="9" r="1.5"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m9 14-2 7 5-3 5 3-2-7"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></symbol>
+    <symbol id="i-scope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-build" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-loop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="i-sprint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M16 4a4 4 0 0 1 0 8M22 21c0-3-2-5-4-5.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo"><span class="badge">KG</span><span>Kyle Gapen<small>PRODUCT MANAGER</small></span></a>
+      <div class="links" id="links">
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn primary" href="mailto:kyle.t.gapen@gmail.com">Get in touch <svg><use href="#i-arrow"/></svg></a>
+      <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('links').classList.toggle('open')"><svg><use href="#i-menu"/></svg></button>
+    </nav>
+  </div>
+</header>
+
+<div style="position:relative">
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+
+<main id="top" class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="reveal">
+      <div class="status"><i></i> Open to Product Manager &amp; Product Analyst roles</div>
+      <h1>Mission-driven operator turned <span class="rot" id="rot">product builder.</span></h1>
+      <p class="lead">Army veteran and former police Field Training Officer bringing years of <b>high-stakes decision-making</b> to product management. I scope problems, talk to users, and <b>ship</b>, including a live fitness app I built end to end.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See my work <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn ghost" href="resume.pdf" target="_blank"><svg><use href="#i-down"/></svg> Résumé</a>
+        <a class="btn ghost" href="https://linkedin.com/in/kylegapen" target="_blank"><svg><use href="#i-in"/></svg> LinkedIn</a>
+      </div>
+      <ul class="trust">
+        <li><svg><use href="#i-check"/></svg>CSPO certified</li>
+        <li><svg><use href="#i-check"/></svg>Scrum Master</li>
+        <li><svg><use href="#i-check"/></svg>MBA candidate, 2027</li>
+        <li><svg><use href="#i-check"/></svg>Shipped a live app</li>
+      </ul>
+    </div>
+
+    <div class="hud reveal">
+      <div class="term">
+        <div class="bar"><b></b><b></b><b></b><span>~/kyle/profile.sh</span></div>
+        <pre id="term"></pre>
+      </div>
+      <div class="hud-tag">STATUS: MISSION READY</div>
+    </div>
+  </div>
+</main>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Product Discovery</span><span>Human Performance</span><span>Public Safety Tech</span><span>Scrum</span><span>User Research</span><span>AI Prototyping</span><span>PRDs</span><span>Product Ownership</span><span>Backlog Strategy</span><span>Leadership</span>
+    <span>Product Discovery</span><span>Human Performance</span><span>Public Safety Tech</span><span>Scrum</span><span>User Research</span><span>AI Prototyping</span><span>PRDs</span><span>Product Ownership</span><span>Backlog Strategy</span><span>Leadership</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat reveal"><div class="ic"><svg><use href="#i-star"/></svg></div><b><span data-count="3">0</span> yrs</b><span>U.S. Army Sergeant</span></div>
+    <div class="stat reveal"><div class="ic"><svg><use href="#i-shield"/></svg></div><b>~<span data-count="4">0</span> yrs</b><span>Patrol officer &amp; FTO</span></div>
+    <div class="stat reveal"><div class="ic"><svg><use href="#i-rocket"/></svg></div><b><span data-count="1">0</span></b><span>Live app shipped</span></div>
+    <div class="stat reveal"><div class="ic"><svg><use href="#i-badge"/></svg></div><b><span data-count="2">0</span></b><span>Agile certifications</span></div>
+    <div class="stat reveal"><div class="ic"><svg><use href="#i-cap"/></svg></div><b>MBA</b><span>In progress, 2027</span></div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-head reveal">
+      <div><div class="mono">01 / About</div><h2>The short version</h2></div>
+      <p>Who I am, what I'm looking for, and why I'm making the jump.</p>
+      <div class="sec-num">01</div>
+    </div>
+    <div class="grid2">
+      <div class="panel reveal">
+        <h3>Quick facts for recruiters</h3>
+        <dl class="facts">
+          <dt>Roles</dt><dd>Product Manager, Assistant Product Manager, Associate Product Manager, Junior Product Manager</dd>
+          <dt>Work setup</dt><dd>Remote only (US)</dd>
+          <dt>Availability</dt><dd><span class="ok">●</span> Immediately</dd>
+          <dt>Veteran</dt><dd>U.S. Army veteran</dd>
+          <dt>Methods</dt><dd>Scrum, product discovery, user interviews, PRDs, backlog management</dd>
+          <dt>Tools</dt><dd>LLMs (Claude, OpenAI, Gemini, Grok, Cursor), Netlify, GitHub, Miro, Supabase (Data/SQL), Umami</dd>
+        </dl>
+      </div>
+      <div class="panel reveal">
+        <h3>Why product?</h3>
+        <p>For years my job was making fast, defensible decisions with incomplete information: on patrol, training new officers, and leading soldiers in Army Reconnaissance. Product management uses the same muscle. Understand the people you serve, define the real problem, and deliver something that works under pressure.</p>
+        <div class="quote">"Recon before you commit. Talk to users before you build."</div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="faq">
+      <div class="sec-head reveal" style="display:block">
+        <div class="mono">02 / FAQ</div><h2>Questions I get</h2>
+        <p style="margin-top:12px">Straight answers about a non-traditional path into product.</p>
+      </div>
+      <div class="reveal">
+        <details open><summary>How does law enforcement translate to product?</summary><p>Both jobs mean understanding people under pressure, prioritizing with limited time, and documenting decisions early. Every call is like a stakeholder meeting: I assess the situation and clarify what people need and how I can provide it. Knowing my team and the resources at hand is crucial to delivering what the client or stakeholder needs. The real skill is reading between the lines to identify the pain points and blockers they need removed.</p></details>
+        <details><summary>Do you have remote work experience?</summary><p>Yes. I work remotely as a contractor from a dedicated home office, and I'm very comfortable in a remote setting.</p></details>
+        <details><summary>What kind of company are you looking for?</summary><p>Small to mid-size tech teams where I can learn fast and own real outcomes.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-head reveal">
+      <div><div class="mono">03 / Experience</div><h2>Where I've served</h2></div>
+      <p>Leadership, training, and analysis across three very different teams.</p>
+      <div class="sec-num">03</div>
+    </div>
+    <div class="timeline">
+      <div class="job current panel reveal" data-n="01">
+        <div class="top"><h3>Product and Business Analyst (Contract)</h3><span class="date">NOV 2026 to PRESENT</span></div>
+        <div class="org"><svg><use href="#i-pin"/></svg>Turing, Remote</div>
+        <ul>
+          <li>Evaluated and compared LLM responses side by side for accuracy, relevance, clarity, and safety using structured quality rubrics to improve LLM performance</li>
+          <li>Reviewed hundreds of AI responses weekly, meeting quality and throughput targets on a remote, deadline-driven project</li>
+          <li>Identified recurring failure modes and response patterns, documenting actionable findings for AI training teams</li>
+          <li>Wrote clear, evidence-based justifications for each rating, turning qualitative judgments into consistent, reviewable feedback</li>
+        </ul>
+        <div class="chips"><span>LLM evaluation</span><span>Analysis</span><span>Documentation</span></div>
+      </div>
+      <div class="job panel reveal" data-n="02">
+        <div class="top"><h3>RAAM Instructor, Active Attack Integration &amp; Command Response</h3><span class="date">JAN 2026 to OCT 2026</span></div>
+        <div class="org"><svg><use href="#i-shield"/></svg>San Antonio Police Department</div>
+        <ul>
+          <li>Joined an early-stage, scrappy department program with minimal standardization; identified inefficiencies in the medical instruction workflow and streamlined the curriculum from 3 hours to 1.5 hours, maintaining all required ALERRT content and improving knowledge retention by creating a tighter, more repeatable delivery process.</li>
+          <li>Coordinated operational workflows across 4+ agencies and 50+ personnel (SAPD and San Antonio Fire Department) during an 11-day live deployment event, ensuring real-time continuity across organizations with different protocols, systems, and communication norms.</li>
+          <li>Delivered nationally accredited training to cohorts of 30+ officers and fire personnel per class; maintained a 100% certification standard.</li>
+          <li>Developed standardized evaluation and reporting documentation from 0-1 for a new program with not much existing structure, creating reusable workflows, parallel to building internal tooling and SOPs.</li>
+        </ul>
+        <div class="chips"><span>Process improvement</span><span>Cross-agency coordination</span><span>0 to 1 programs</span></div>
+      </div>
+      <div class="job panel reveal" data-n="03">
+        <div class="top"><h3>Field Training Officer / Patrol Officer</h3><span class="date">JAN 2023 to OCT 2026</span></div>
+        <div class="org"><svg><use href="#i-shield"/></svg>San Antonio Police Department</div>
+        <ul>
+          <li>Operated daily across multiple third-party platforms, CAD dispatch systems, Axon/Evidence.com, and Microsoft 365. Managing data entry, evidence workflows, and cross-department information handoffs; developed fluency in how data quality and system integration failures create downstream operational breakdowns.</li>
+          <li>Authored detailed incident and investigative reports translating real-time field observations into structured, actionable documentation for downstream users including detectives, prosecutors, and court systems.</li>
+          <li>Managed high-complexity situations with competing stakeholders (public, legal, command leadership), applying rapid triage, prioritization under pressure, and documented decision rationale.</li>
+          <li>Collaborated across agencies with differing objectives, knowledge levels, and communication styles to drive case outcomes; owned end-to-end communication from street level to court testimony.</li>
+        </ul>
+        <div class="chips"><span>Systems &amp; data</span><span>Documentation</span><span>Stakeholder management</span></div>
+      </div>
+      <div class="job panel reveal" data-n="04">
+        <div class="top"><h3>Sergeant, Army Reconnaissance</h3><span class="date">3 YEARS</span></div>
+        <div class="org"><svg><use href="#i-star"/></svg>U.S. Army</div>
+        <ul>
+          <li>Led a 4-person reconnaissance team executing mission-critical intelligence gathering; synthesized field data into commander-level briefings that shaped operational decisions.</li>
+          <li>Designed and delivered structured MOS training for 40+ soldiers across land navigation, drone operations, and tactical procedures; built curriculum from scratch where no existing framework existed.</li>
+          <li>Managed $1.5M+ in sensitive equipment, weapons, optics, and drone assets with 100% accountability across all inspections and deployments.</li>
+          <li>Earned Expert Drone Certification and led unit adoption of drone-enabled threat identification, improving situational awareness.</li>
+        </ul>
+        <div class="chips"><span>Leadership</span><span>Training design</span><span>Briefings</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="sec-head reveal">
+      <div><div class="mono">04 / Selected work</div><h2>Things I've built &amp; scoped</h2></div>
+      <p>One live product, one product teardown, and a daily practice habit.</p>
+      <div class="sec-num">04</div>
+    </div>
+    <div class="work">
+      <article class="wcard reveal">
+        <div class="visual">
+          <div class="phone phone2"><div class="notch"></div><div class="ttl">TRACKER</div><div class="h">Week 3</div><div class="row">Mon <b>✓</b></div><div class="row">Wed <b>✓</b></div><div class="row">Fri <b>…</b></div></div>
+          <div class="phone"><div class="notch"></div><div class="ttl">MODERN COMBAT PATH</div><div class="h">ACFT Prep: Day 12</div>
+            <div class="row">Deadlift <b>3 × 5</b></div><div class="row">Hand-release push-up <b>4 × 12</b></div><div class="row">Sprint-drag-carry <b>5 rds</b></div><div class="row">Plank <b>3 × 60s</b></div>
+            <div class="bar2"><i></i></div><div class="cap">Program 68% complete</div></div>
+        </div>
+        <div class="body">
+          <div class="metric live"><i></i>Live product</div>
+          <h3>Modern Combat Path</h3>
+          <dl>
+            <dt>Problem</dt><dd>Friends, coworkers, and service members needed training plans tied to specific test standards, not generic workouts.</dd>
+            <dt>Contribution</dt><dd>Owned it end to end: scoped features, built the plan generator and tracker, shipped it, and set up a user feedback loop.</dd>
+            <dt>Outcome</dt><dd>Feedback showed the "refresh workout" button only cycled a fixed set, so I reworked it to pull from the full exercise library.</dd>
+          </dl>
+          <div class="tags"><span>ACFT</span><span>PFT/CFT</span><span>PRT</span><span>AI prototyping</span><span>Netlify</span></div>
+          <div><a class="btn primary" href="https://modern-combat-path.netlify.app/app" target="_blank">Open the app <svg><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="wcard reveal">
+        <div class="visual">
+          <div class="viz">
+            <div class="rpt">
+              <div class="rpt-h">RMS REPORT <span>NIBRS GAP</span></div>
+              <div class="rpt-r ok"><i>✓</i>General info</div>
+              <div class="rpt-r ok"><i>✓</i>Persons &amp; property</div>
+              <div class="rpt-r bad"><i>✕</i>Offense: Completed <b>link blocked</b></div>
+              <div class="rpt-r warn"><i>!</i>Workaround: Attempted</div>
+            </div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="metric"><i></i>Product teardown</div>
+          <h3>Mark43 Product Teardown</h3>
+          <dl>
+            <dt>What</dt><dd>A teardown of Mark43's cloud-native CAD/RMS platform, combining public research with my firsthand experience as a patrol officer using the RMS in the field.</dd>
+            <dt>Key finding</dt><dd>Offense-status and evidence-linking logic conflicts with NIBRS requirements, forcing officers into a workaround that hurts downstream data accuracy.</dd>
+            <dt>Deliverables</dt><dd>User segments, personas, a journey map, strengths and weaknesses, market trends, four recommendations, and key metrics to track.</dd>
+          </dl>
+          <div class="tags"><span>Personas</span><span>Journey map</span><span>Market analysis</span><span>Metrics</span></div>
+          <div><a class="btn primary" href="mark43-teardown.pdf" target="_blank">Read the teardown <svg><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="wcard reveal">
+        <div class="visual">
+          <div class="viz"><div class="board"><div></div><div class="hi"></div><div></div><div></div><div></div><div class="hi"></div></div></div>
+        </div>
+        <div class="body">
+          <div class="metric"><i></i>Daily practice</div>
+          <h3>Product Owner Simulation</h3>
+          <dl>
+            <dt>What</dt><dd>Daily reps as a Product Owner against simulated stakeholders, grounded in the Scrum Guide.</dd>
+            <dt>Skills</dt><dd>Prioritization, saying no with reasons, user stories, and handling conflicting requests.</dd>
+          </dl>
+          <div class="tags"><span>Scrum</span><span>Stakeholders</span><span>User stories</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sec-head reveal">
+      <div><div class="mono">05 / Skills &amp; education</div><h2>The toolkit</h2></div>
+      <p>What I bring to a product team on day one.</p>
+      <div class="sec-num">05</div>
+    </div>
+    <div class="skills">
+      <div class="panel skill reveal"><div class="ic"><svg><use href="#i-layers"/></svg></div><h3>Product</h3><ul><li>Product discovery</li><li>User interviews</li><li>PRDs &amp; requirements</li><li>Prioritization</li><li>Roadmapping</li></ul></div>
+      <div class="panel skill reveal"><div class="ic"><svg><use href="#i-sprint"/></svg></div><h3>Agile</h3><ul><li>Scrum framework</li><li>Backlog management</li><li>User stories &amp; acceptance criteria</li><li>Sprint events</li></ul></div>
+      <div class="panel skill reveal"><div class="ic"><svg><use href="#i-cpu"/></svg></div><h3>Technical</h3><ul><li>AI-assisted prototyping</li><li>Coding with AI agents</li><li>LLM response evaluation</li><li>Netlify deployment</li></ul></div>
+      <div class="panel skill reveal"><div class="ic"><svg><use href="#i-users"/></svg></div><h3>Leadership</h3><ul><li>Training &amp; coaching</li><li>Instruction (TECC, RAAM)</li><li>Clear written reporting</li><li>Calm under pressure</li></ul></div>
+    </div>
+    <div class="edu">
+      <div class="cert reveal"><div class="seal">MBA</div><div><b>MBA, WGU</b><span>Graduating early 2027</span></div></div>
+      <div class="cert reveal"><div class="seal">B.S.</div><div><b>B.S., Family and Human Development</b><span>Arizona State University, cum laude, 2018</span></div></div>
+      <div class="cert reveal"><div class="seal">CSPO</div><div><b>CSPO &amp; Scrum Master</b><span>Scrum Alliance certified</span></div></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact reveal">
+      <div class="mono">06 / Contact</div>
+      <h2>Let's build something<br>that matters.</h2>
+      <p>Hiring a Product Manager, Assistant, Associate, or Junior Product Manager? I'm available for full-time, part-time, contract, and apprenticeship roles.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:kyle.t.gapen@gmail.com"><svg><use href="#i-mail"/></svg> kyle.t.gapen@gmail.com</a>
+        <a class="btn primary" href="https://www.linkedin.com/in/kylegapen" target="_blank"><svg><use href="#i-in"/></svg> LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Kyle Gapen. Built with care.</span>
+    <div class="soc">
+      <a href="https://linkedin.com/in/kylegapen" target="_blank" aria-label="LinkedIn"><svg><use href="#i-in"/></svg></a>
+      <a href="mailto:kyle.t.gapen@gmail.com" aria-label="Email"><svg><use href="#i-mail"/></svg></a>
+    </div>
+  </div>
+</footer>
+<a href="#top" class="totop" id="totop" aria-label="Back to top"><svg><use href="#i-up"/></svg></a>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Typing terminal
+  const lines = [
+    ['name','Kyle Gapen'], [''],
+    ['k','role     ','v','Product Manager'],
+    ['k','         ','v','Assistant / Associate / Junior PM'],
+    ['k','shipped  ','v','Modern Combat Path (live)'],
+    ['k','certs    ','v','CSPO, Scrum Master'],
+    ['k','edu      ','v','B.S. ASU, MBA WGU 2027'],
+    ['k','status   ','ok','available ✓'],
+    ['k','         ','ok','full-time, part-time, contract,'],
+    ['k','         ','ok','and apprenticeship']
+  ];
+  const term = document.getElementById('term');
+  let html = '', li = 0;
+  function typeLine(){
+    if (li >= lines.length){ term.innerHTML = html + '<span class="cursor"></span>'; return; }
+    const l = lines[li++]; let seg = '';
+    for (let i = 0; i < l.length; i += 2) seg += l[i] ? `<span class="${l[i]}">${l[i+1]}</span>` : '';
+    html += seg + '\n'; term.innerHTML = html + '<span class="cursor"></span>';
+    setTimeout(typeLine, 180);
+  }
+  setTimeout(typeLine, 500);
+
+  // Rotating headline word
+  const words = ['product builder.','problem solver.','user advocate.','team leader.'];
+  const rot = document.getElementById('rot'); let wi = 0;
+  setInterval(() => {
+    wi = (wi + 1) % words.length; const w = words[wi]; let n = 0;
+    rot.textContent = '';
+    const t = setInterval(() => { rot.textContent = w.slice(0, ++n); if (n >= w.length) clearInterval(t); }, 55);
+  }, 3200);
+
+  // Reveal + count up
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-count]').forEach(c => {
+      const end = +c.dataset.count; let v = 0;
+      const t = setInterval(() => { c.textContent = ++v; if (v >= end) clearInterval(t); }, 220);
+    });
+    io.unobserve(e.target);
+  }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+
+  // Card spotlight
+  document.querySelectorAll('.wcard').forEach(c => c.addEventListener('mousemove', e => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }));
+
+  // Scroll: progress, active nav, back to top
+  const links = [...document.querySelectorAll('.links a')];
+  const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+  const bar = document.getElementById("progress"), toTop = document.getElementById('totop');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100 + '%';
+    toTop.classList.toggle('show', h.scrollTop > 600);
+    let idx = -1; secs.forEach((s, j) => { if (s && s.getBoundingClientRect().top < 140) idx = j; });
+    links.forEach((a, j) => a.classList.toggle('active', j === idx));
+  }, { passive: true });
+  links.forEach(a => a.addEventListener('click', () => document.getElementById('links').classList.remove('open')));
+</script>
+</body>
+</html>
