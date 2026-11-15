@@ -61,6 +61,7 @@
   .status i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--green);animation:ping 1.8s infinite}
   @keyframes ping{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.8)}}
   h1{font-size:clamp(2.4rem,5.4vw,3.9rem);line-height:1.05;font-weight:900;letter-spacing:-.035em;margin-bottom:22px}
+  .rot-line{display:block;height:1.1em;white-space:nowrap}
   .rot{display:inline-block;background:linear-gradient(100deg,var(--accent2),var(--accent) 60%);-webkit-background-clip:text;background-clip:text;color:transparent;border-right:3px solid var(--accent);padding-right:4px;animation:caret .8s steps(1) infinite}
   @keyframes caret{50%{border-color:transparent}}
   .lead{color:var(--muted);font-size:1.1rem;max-width:560px;margin-bottom:30px}
@@ -345,7 +346,7 @@
   <div class="hero">
     <div class="reveal">
       <div class="status"><i></i> Open to Product Manager &amp; Product Analyst roles</div>
-      <h1>Mission-driven operator turned <span class="rot" id="rot">product builder.</span></h1>
+      <h1>Mission-driven operator turned <span class="rot-line"><span class="rot" id="rot">product builder.</span></span></h1>
       <p class="lead">Army veteran and former police Field Training Officer bringing years of <b>high-stakes decision-making</b> to product management. I scope problems, talk to users, and <b>ship</b>, including a live fitness app I built end to end.</p>
       <div class="cta">
         <a class="btn primary" href="#work">See my work <svg><use href="#i-arrow"/></svg></a>
