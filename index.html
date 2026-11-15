@@ -14,7 +14,7 @@
     --radius:16px; --max:1120px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
   body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   svg{display:block;aspect-ratio:1/1;height:auto;flex:none}
@@ -25,12 +25,21 @@
   /* Background layers */
   .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
     background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:56px 56px;opacity:.28;
-    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 80%);
-    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 80%)}
+    background-size:56px 56px;opacity:.3;
+    mask-image:radial-gradient(ellipse 90% 80% at 50% 40%,#000 40%,transparent 95%);
+    -webkit-mask-image:radial-gradient(ellipse 90% 80% at 50% 40%,#000 40%,transparent 95%)}
+  .bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(520px 520px at 100% 0%,rgba(229,56,59,.28),transparent 70%),
+               radial-gradient(460px 460px at 0% 100%,rgba(229,56,59,.18),transparent 70%)}
   .glow{position:absolute;z-index:1;pointer-events:none;border-radius:50%;filter:blur(90px)}
   .glow.g1{width:520px;height:520px;background:rgba(229,56,59,.22);top:-140px;right:-120px}
   .glow.g2{width:380px;height:380px;background:rgba(229,56,59,.10);top:520px;left:-180px}
+  body{position:relative}
+  #topo{position:absolute;left:0;top:0;width:100%;z-index:1;pointer-events:none;overflow:hidden}
+  #topo .lbl{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;fill:rgba(255,107,107,.75)}
+  #topo .lbl2{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;fill:rgba(148,155,166,.7)}
+  #topo .final{animation:obj 2.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes obj{50%{transform:scale(1.35);opacity:.35}}
   .noise{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.035;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   #progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:60;box-shadow:0 0 10px var(--accent)}
@@ -288,7 +297,9 @@
 <body>
 <div id="progress"></div>
 <div class="bg-grid"></div>
+<div class="bg-glow"></div>
 <div class="noise"></div>
+<svg id="topo" aria-hidden="true"></svg>
 
 <!-- SVG icon sprite -->
 <svg width="0" height="0" style="position:absolute;width:0;height:0">
@@ -672,6 +683,61 @@
     links.forEach((a, j) => a.classList.toggle('active', j === idx));
   }, { passive: true });
   links.forEach(a => a.addEventListener('click', () => document.getElementById('links').classList.remove('open')));
+
+  // Topographic map + objective trail across the whole page
+  (function(){
+    const svg=document.getElementById('topo'), NS='http://www.w3.org/2000/svg';
+    const stops=[['#top','START','SP'],['#about','ABOUT','OBJ 01'],['#faq','FAQ','OBJ 02'],['#experience','EXPERIENCE','OBJ 03'],['#work','WORK','OBJ 04'],['#skills','SKILLS','OBJ 05'],['#contact','CONTACT','OBJECTIVE']];
+    let samples=[], traveled=null, len=0;
+    function rnd(seed){return()=>{seed=(seed*16807)%2147483647;return seed/2147483647}}
+    function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);(parent||svg).appendChild(e);return e}
+    function ring(cx,cy,r,ph){let d='';for(let i=0;i<=72;i++){const t=i/72*Math.PI*2;const rr=r*(1+.16*Math.sin(3*t+ph[0])+.09*Math.sin(5*t+ph[1])+.05*Math.sin(7*t+ph[2]));d+=(i?'L':'M')+(cx+rr*Math.cos(t)*1.35).toFixed(0)+' '+(cy+rr*Math.sin(t)).toFixed(0)}return d+'Z'}
+    function build(){
+      const W=document.documentElement.clientWidth, H=document.documentElement.scrollHeight;
+      svg.setAttribute('width',W);svg.setAttribute('height',H);svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.style.height=H+'px';
+      svg.innerHTML='';
+      const R=rnd(42), g=el('g',{fill:'none','stroke-linejoin':'round'});
+      for(let y=150,i=0;y<H+300;y+=520,i++){
+        const cx=(i%2?W*0.12:W*0.88)+(R()-.5)*W*.15, cy=y+(R()-.5)*160; let ph=[R()*6,R()*6,R()*6];
+        const n=7+Math.floor(R()*4);
+        for(let k=0;k<n;k++){ph=ph.map(v=>v+(R()-.5)*.5);
+          el('path',{d:ring(cx,cy,40+k*48,ph),stroke:k%4==2?'rgba(229,56,59,.26)':'rgba(229,56,59,.13)','stroke-width':k%4==2?1.6:1.1},g)}
+      }
+      // waypoints
+      const content=Math.min(W,1120), gut=(W-content)/2, wide=gut>=70;
+      const xl=wide?gut/2:14, xr=wide?W-gut/2:W-14;
+      const pts=stops.map(([sel],i)=>{const e=document.querySelector(sel); const top=e.getBoundingClientRect().top+scrollY;
+        if(i==0) return [xl,top+260];
+        if(i==stops.length-1){const box=e.querySelector('.contact'); const bt=box.getBoundingClientRect().top+scrollY; return [W/2,bt-34]}
+        return [i%2?xr:xl, top+30]});
+      let d=`M${pts[0][0]} ${pts[0][1]}`;
+      for(let i=1;i<pts.length;i++){const [x1,y1]=pts[i-1],[x2,y2]=pts[i],dy=(y2-y1)*.5;d+=` C${x1} ${y1+dy} ${x2} ${y2-dy} ${x2} ${y2}`}
+      el('path',{d,fill:'none',stroke:'rgba(229,56,59,.55)','stroke-width':2,'stroke-dasharray':'2 10','stroke-linecap':'round'});
+      traveled=el('path',{d,fill:'none',stroke:'#e5383b','stroke-width':2.5,'stroke-linecap':'round',filter:'drop-shadow(0 0 4px rgba(229,56,59,.8))'});
+      len=traveled.getTotalLength(); traveled.style.strokeDasharray=len; traveled.style.strokeDashoffset=len;
+      samples=[];for(let l=0;l<=len;l+=20){samples.push([l,traveled.getPointAtLength(l).y])}
+      pts.forEach(([x,y],i)=>{
+        const last=i==pts.length-1, first=i==0;
+        if(last){el('circle',{cx:x,cy:y,r:16,fill:'none',stroke:'#e5383b','stroke-width':2,class:'final'});
+          el('circle',{cx:x,cy:y,r:9,fill:'none',stroke:'#e5383b','stroke-width':2});el('circle',{cx:x,cy:y,r:3.5,fill:'#e5383b'});}
+        else{el('rect',{x:x-6,y:y-6,width:12,height:12,transform:`rotate(45 ${x} ${y})`,fill:'#08090b',stroke:'#e5383b','stroke-width':2});
+          el('circle',{cx:x,cy:y,r:2.2,fill:'#e5383b'});}
+        if(wide||last){const anchor=last?'middle':'middle', ty=last?y-26:y+26;
+          const t=el('text',{x,y:ty,'text-anchor':anchor,class:'lbl'});t.textContent=(last?'★ ':'▲ ')+stops[i][2];
+          const t2=el('text',{x,y:ty+14,'text-anchor':anchor,class:'lbl2'});t2.textContent=stops[i][1];
+          if(last){t.setAttribute('y',y-40);t2.setAttribute('y',y-26)}}
+      });
+      update();
+    }
+    function update(){
+      if(!traveled)return; const target=scrollY+innerHeight*.6; let l=0;
+      for(const [sl,sy] of samples){if(sy<=target)l=sl;else break}
+      traveled.style.strokeDashoffset=len-l;
+    }
+    let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(build,200)});
+    addEventListener('scroll',update,{passive:true});
+    addEventListener('load',()=>setTimeout(build,300)); if(document.readyState==='complete')setTimeout(build,300);
+  })();
 </script>
 </body>
 </html>
