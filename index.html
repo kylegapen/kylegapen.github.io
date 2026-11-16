@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kyle Gapen | Product Manager</title>
 <meta name="description" content="Kyle Gapen: Army veteran and former police FTO moving into product management. CSPO, Scrum Master, MBA candidate.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e5383b'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='white' text-anchor='middle'%3EKG%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://kylegapen.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kylegapen.github.io/">
+<meta property="og:title" content="Kyle Gapen | Product Manager">
+<meta property="og:description" content="Army veteran and former police FTO moving into product management. CSPO, Scrum Master, MBA candidate. Open to PM roles.">
+<meta property="og:image" content="https://kylegapen.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kyle Gapen | Product Manager">
+<meta name="twitter:image" content="https://kylegapen.github.io/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -78,8 +90,8 @@
   .lead b{color:var(--text);font-weight:600}
   .cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px}
   .trust{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
-  .trust li{display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--muted);padding:6px 12px;border-radius:8px;background:var(--panel);border:1px solid var(--line)}
-  .trust svg{width:14px;color:var(--accent)}
+  .trust li{display:flex;align-items:center;gap:10px;font-size:1.01rem;color:var(--muted);padding:7px 14px;border-radius:10px;background:var(--panel);border:1px solid var(--line)}
+  .trust svg{width:17px;color:var(--accent)}
 
   /* Terminal / HUD card */
   .hud{position:relative}
@@ -91,11 +103,16 @@
   .term .bar b{width:11px;height:11px;border-radius:50%;background:#2c3038}
   .term .bar b:first-child{background:var(--accent)}
   .term .bar span{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--muted)}
-  .term pre{padding:22px;font-family:"JetBrains Mono",monospace;font-size:.82rem;color:var(--muted);white-space:pre-wrap;line-height:1.9;min-height:290px}
+  .term pre{padding:22px;font-family:"JetBrains Mono",monospace;font-size:.82rem;color:var(--muted);white-space:pre-wrap;line-height:1.9;min-height:230px}
   .name{display:inline-block;font-family:Inter,sans-serif;font-size:1.7rem;font-weight:800;letter-spacing:-.02em;color:var(--text);line-height:1.2;margin-bottom:-6px} .k{color:var(--accent2)} .v{color:var(--text)} .ok{color:var(--green)}
   .cursor{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:-2px;animation:caret 1s steps(1) infinite}
   .hud-tag{position:absolute;bottom:-16px;left:24px;z-index:4;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.12em;background:var(--bg);border:1px solid var(--line2);padding:5px 10px;border-radius:6px;color:var(--muted)}
 
+  .who{display:flex;align-items:center;gap:16px;padding:20px 22px 0}
+  .who img{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 0 0 5px rgba(229,56,59,.15)}
+  .who b{display:block;font-size:1.55rem;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+  .who span{font-family:"JetBrains Mono",monospace;font-size:.74rem;letter-spacing:.08em;color:var(--accent2)}
+  .badge-img{flex:none;width:64px;height:64px}
   /* Marquee */
   .marquee{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(17,19,23,.6);overflow:hidden;margin-bottom:80px}
   .marquee .track{display:flex;gap:46px;width:max-content;padding:18px 0;animation:scroll 38s linear infinite}
@@ -161,7 +178,7 @@
   .chips span{font-size:.74rem;padding:4px 10px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}
 
   /* Work cards */
-  .work{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .work{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
   .wcard{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);display:flex;flex-direction:column;overflow:hidden;transition:transform .3s,border-color .3s}
   .wcard:hover{transform:translateY(-4px);border-color:var(--line2)}
   .wcard::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;
@@ -223,6 +240,22 @@
   .rpt-r.bad b{margin-left:auto;font-size:.58rem;color:var(--accent2);font-weight:600}
   .rpt-r.warn{color:#f5b041}
   .rpt-r.warn i{background:rgba(245,176,65,.15);color:#f5b041}
+  .docs{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+  .doc{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:11px;background:var(--panel2);border:1px solid var(--line);transition:.2s}
+  .doc:hover{border-color:var(--accent);transform:translateX(3px)}
+  .doc-ic{flex:none;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:rgba(229,56,59,.12);color:var(--accent2)}
+  .doc-ic svg{width:17px}
+  .doc-t{flex:1;min-width:0}
+  .doc-t b{display:block;font-size:.9rem}
+  .doc-t small{display:block;font-size:.76rem;color:var(--muted);line-height:1.4}
+  .doc-go{display:flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;color:var(--accent2)}
+  .doc-go svg{width:14px}
+  .wcard.compact .visual{height:110px}
+  .wcard.compact .body{padding:20px}
+  .wcard.compact h3{font-size:1.1rem;margin-bottom:12px}
+  .wcard.compact dd{font-size:.86rem}
+  .wcard.compact .board{grid-template-columns:repeat(3,52px)}
+  .wcard.compact .board div{height:32px}
   /* Skills */
   .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   .skill .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;margin-bottom:16px;background:linear-gradient(140deg,rgba(229,56,59,.18),rgba(229,56,59,.04));border:1px solid rgba(229,56,59,.25);color:var(--accent2)}
@@ -336,6 +369,7 @@
     <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M16 4a4 4 0 0 1 0 8M22 21c0-3-2-5-4-5.5"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
     <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
   </defs>
 </svg>
@@ -379,13 +413,13 @@
         <li><svg><use href="#i-check"/></svg>CSPO certified</li>
         <li><svg><use href="#i-check"/></svg>Scrum Master</li>
         <li><svg><use href="#i-check"/></svg>MBA candidate, 2027</li>
-        <li><svg><use href="#i-check"/></svg>Shipped a live app</li>
       </ul>
     </div>
 
     <div class="hud reveal">
       <div class="term">
         <div class="bar"><b></b><b></b><b></b><span>~/kyle/profile.sh</span></div>
+        <div class="who"><img src="headshot.jpg" alt="Kyle Gapen headshot" width="76" height="76"><div><b>Kyle Gapen</b><span>Product Manager · CSPO</span></div></div>
         <pre id="term"></pre>
       </div>
       <div class="hud-tag">STATUS: MISSION READY</div>
@@ -403,15 +437,6 @@
 </div>
 
 <main class="wrap">
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat reveal"><div class="ic"><svg><use href="#i-star"/></svg></div><b><span data-count="3">0</span> yrs</b><span>U.S. Army Sergeant</span></div>
-    <div class="stat reveal"><div class="ic"><svg><use href="#i-shield"/></svg></div><b>~<span data-count="4">0</span> yrs</b><span>Patrol officer &amp; FTO</span></div>
-    <div class="stat reveal"><div class="ic"><svg><use href="#i-rocket"/></svg></div><b><span data-count="1">0</span></b><span>Live app shipped</span></div>
-    <div class="stat reveal"><div class="ic"><svg><use href="#i-badge"/></svg></div><b><span data-count="2">0</span></b><span>Agile certifications</span></div>
-    <div class="stat reveal"><div class="ic"><svg><use href="#i-cap"/></svg></div><b>MBA</b><span>In progress, 2027</span></div>
-  </div>
-
   <!-- ABOUT -->
   <section id="about">
     <div class="sec-head reveal">
@@ -433,8 +458,8 @@
       </div>
       <div class="panel reveal">
         <h3>Why product?</h3>
-        <p>For years my job was making fast, defensible decisions with incomplete information: on patrol, training new officers, and leading soldiers in Army Reconnaissance. Product management uses the same muscle. Understand the people you serve, define the real problem, and deliver something that works under pressure.</p>
-        <div class="quote">"Recon before you commit. Talk to users before you build."</div>
+        <p>For years, my job was making fast, defensible decisions with incomplete information: on patrol, training new officers, and leading soldiers. Product management uses the same muscle. Understand the people you serve, define the real problem, and deliver something that works under pressure.</p>
+        <div class="quote">"From the street to the sprint: same mission, new terrain."</div>
       </div>
     </div>
   </section>
@@ -515,7 +540,7 @@
   <section id="work">
     <div class="sec-head reveal">
       <div><div class="mono">04 / Selected work</div><h2>Things I've built &amp; scoped</h2></div>
-      <p>One live product, one product teardown, and a daily practice habit.</p>
+      <p>A live product with its case study and PRD, a product teardown, and a daily practice habit.</p>
       <div class="sec-num">04</div>
     </div>
     <div class="work">
@@ -535,6 +560,18 @@
             <dt>Outcome</dt><dd>Tracked usage and retention with Supabase analytics: <b style="color:var(--text)">60% of users return to the app daily</b>, a rate that has grown steadily since launch several months ago.</dd>
           </dl>
           <div class="tags"><span>ACFT</span><span>PFT/CFT</span><span>PRT</span><span>AI prototyping</span><span>Supabase</span><span>Netlify</span></div>
+          <div class="docs">
+            <a class="doc" href="mcp-case-study.pdf" target="_blank">
+              <span class="doc-ic"><svg><use href="#i-layers"/></svg></span>
+              <span class="doc-t"><b>Case study</b><small>From a training gap to a daily habit · 2 pages</small></span>
+              <span class="doc-go">Read <svg><use href="#i-arrow"/></svg></span>
+            </a>
+            <a class="doc" href="prd-sample.pdf" target="_blank">
+              <span class="doc-ic"><svg><use href="#i-sprint"/></svg></span>
+              <span class="doc-t"><b>PRD sample</b><small>Law Enforcement Readiness Track · 3 pages</small></span>
+              <span class="doc-go">View <svg><use href="#i-arrow"/></svg></span>
+            </a>
+          </div>
           <div><a class="btn primary" href="https://modern-combat-path.netlify.app" target="_blank">Open the app <svg><use href="#i-arrow"/></svg></a></div>
         </div>
       </article>
@@ -597,7 +634,7 @@
     <div class="edu">
       <div class="cert reveal"><div class="seal">MBA</div><div><b>MBA, WGU</b><span>Graduating early 2027</span></div></div>
       <div class="cert reveal"><div class="seal">B.S.</div><div><b>B.S., Family and Human Development</b><span>Arizona State University, cum laude, 2018</span></div></div>
-      <div class="cert reveal"><div class="seal">CSPO</div><div><b>CSPO &amp; Scrum Master</b><span>Scrum Alliance certified</span></div></div>
+      <div class="cert reveal"><img class="badge-img" src="cspo-badge.png" alt="Scrum Alliance Certified Scrum Product Owner badge" width="64" height="64"><div><b>CSPO &amp; Scrum Master</b><span>Scrum Alliance certified</span></div></div>
     </div>
   </section>
 
@@ -630,7 +667,7 @@
   <div class="wrap">
     <div class="msg"><i></i>Available now: full-time, part-time, contract &amp; apprenticeship</div>
     <div class="acts">
-      <a class="btn primary" href="mailto:kyle.t.gapen@gmail.com"><svg><use href="#i-mail"/></svg> Contact now</a>
+      <a class="btn primary" id="book" href="https://calendar.app.google/mfQqBrYUpNitqUvE7" target="_blank"><svg><use href="#i-cal"/></svg> Book a 15 min call</a>
       <a class="btn primary" href="https://www.linkedin.com/in/kylegapen" target="_blank"><svg><use href="#i-in"/></svg> LinkedIn</a>
     </div>
   </div>
@@ -642,7 +679,6 @@
 
   // Typing terminal
   const lines = [
-    ['name','Kyle Gapen'], [''],
     ['k','role     ','v','Product Manager'],
     ['k','         ','v','Assistant / Associate / Junior PM'],
     ['k','shipped  ','v','Modern Combat Path (live)'],
