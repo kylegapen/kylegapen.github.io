@@ -266,6 +266,23 @@
   .cert b{display:block;font-size:.95rem}
   .cert span{font-size:.82rem;color:var(--muted)}
 
+  .sbr{margin-top:20px}
+  .sbr-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px}
+  .sbr-head .ic,.strat .ic{flex:none;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(140deg,rgba(229,56,59,.18),rgba(229,56,59,.04));border:1px solid rgba(229,56,59,.25);color:var(--accent2)}
+  .sbr-head .ic svg{width:20px}
+  .sbr-head h3{margin-bottom:4px}
+  .map{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .map-row{display:grid;grid-template-columns:150px 22px 1fr;align-items:center;gap:10px;padding:12px 14px;border-radius:11px;background:var(--panel2);border:1px solid var(--line)}
+  .map-mil{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2)}
+  .map-arrow{color:var(--accent)} .map-arrow svg{width:18px}
+  .map-biz b{display:block;font-size:.95rem;color:var(--text)}
+  .map-biz span{font-size:.84rem;color:var(--muted)}
+  .skills{grid-template-columns:repeat(3,1fr)!important}
+  .strat{grid-column:span 2}
+  .strat ul{columns:2;column-gap:28px;display:block}
+  .strat ul li{margin-bottom:9px;break-inside:avoid}
+  .mba{margin-top:16px}
+  .mba .chips{margin-top:4px}
   /* FAQ */
   .faq{display:grid;grid-template-columns:1fr 1.6fr;gap:40px}
   details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 22px;margin-bottom:10px;transition:border-color .3s}
@@ -312,7 +329,8 @@
     .stats{grid-template-columns:repeat(3,1fr)}
     .process{grid-template-columns:1fr 1fr}
     .step::after{display:none}
-    .skills{grid-template-columns:1fr 1fr}
+    .skills{grid-template-columns:1fr 1fr!important}
+    .map{grid-template-columns:1fr}
     .work{grid-template-columns:1fr}
   }
   @media (max-width:760px){
@@ -334,7 +352,12 @@
     .facts dt{border-bottom:0;padding-bottom:0}
     .sec-num{font-size:4.5rem;top:-24px}
     .process{grid-template-columns:1fr}
-    .skills{grid-template-columns:1fr}
+    .skills{grid-template-columns:1fr!important}
+    .strat{grid-column:auto}
+    .strat ul{columns:1}
+    .map{grid-template-columns:1fr}
+    .map-row{grid-template-columns:1fr;gap:4px}
+    .map-arrow{display:none}
   }
 </style>
 </head>
@@ -403,7 +426,7 @@
     <div class="reveal">
       <div class="status"><i></i> Open to Product Manager &amp; Product Analyst roles</div>
       <h1>Mission-driven operator turned <span class="rot-line"><span class="rot" id="rot">product builder.</span></span></h1>
-      <p class="lead">Army veteran and former police Field Training Officer bringing years of <b>high-stakes decision-making</b> to product management. I scope problems, talk to users, and <b>ship</b>, including a live fitness app I built end to end.</p>
+      <p class="lead">Army veteran and former police Field Training Officer bringing years of <b>high-stakes decision-making</b> to product management. I scope problems, talk to users, and <b>ship</b> products end to end, always tying product decisions back to <b>business strategy</b>: the market, the mission, and the bottom line.</p>
       <div class="cta">
         <a class="btn primary" href="#work">See my work <svg><use href="#i-arrow"/></svg></a>
         <a class="btn ghost" href="resume.pdf" target="_blank"><svg><use href="#i-down"/></svg> Résumé</a>
@@ -452,6 +475,7 @@
           <dt>Work setup</dt><dd>Remote only (US)</dd>
           <dt>Availability</dt><dd><span class="ok">●</span> Immediately</dd>
           <dt>Veteran</dt><dd>U.S. Army veteran</dd>
+          <dt>Focus</dt><dd>Product strategy, business strategy, go-to-market</dd>
           <dt>Methods</dt><dd>Scrum, product discovery, user interviews, PRDs, backlog management</dd>
           <dt>Tools</dt><dd>LLMs (Claude, OpenAI, Gemini, Grok, Cursor), Netlify, GitHub, Miro, Supabase (Data/SQL), Umami</dd>
         </dl>
@@ -460,8 +484,11 @@
         <h3>Why product?</h3>
         <p>For years, my job was making fast, defensible decisions with incomplete information: on patrol, training new officers, and leading soldiers. Product management uses the same muscle. Understand the people you serve, define the real problem, and deliver something that works under pressure.</p>
         <div class="quote">"From the street to the sprint: same mission, new terrain."</div>
+        <h3 style="margin-top:24px">Strategic Business Readiness</h3>
+        <p>Military strategy and business strategy use the same categories. Only the jargon changes. Commander's intent becomes the product vision, mission analysis becomes market and problem analysis, and wargaming courses of action becomes comparing strategic options before committing resources. Resource and logistics planning maps to budgets and operations, the 3 M's (Mission, Men, Me) set my priorities, and every after action review becomes a retro that makes the next plan better.</p>
       </div>
     </div>
+  
   </section>
 
   
@@ -475,6 +502,7 @@
       </div>
       <div class="reveal">
         <details open><summary>How does law enforcement translate to product?</summary><p>Both jobs mean understanding people under pressure, prioritizing with limited time, and documenting decisions early. Every call is like a stakeholder meeting: I assess the situation and clarify what people need and how I can provide it. Knowing my team and the resources at hand is crucial to delivering what the client or stakeholder needs. The real skill is reading between the lines to identify the pain points and blockers they need removed.</p></details>
+        <details><summary>How do you approach business strategy?</summary><p>I start with the mission: what outcome the business needs and who it serves. Then I look at the people it affects, the market and competitors, and what it will cost in time and resources. I would rather validate an idea cheaply before committing to it. The goal is a clear plan the team understands and can carry out without waiting on me.</p></details>
         <details><summary>Do you have remote work experience?</summary><p>Yes. I work remotely as a contractor from a dedicated home office, and I'm very comfortable in a remote setting.</p></details>
         <details><summary>What kind of company are you looking for?</summary><p>Small to mid-size tech teams where I can learn fast and own real outcomes.</p></details>
       </div>
@@ -626,6 +654,7 @@
       <div class="sec-num">05</div>
     </div>
     <div class="skills">
+      <div class="panel skill reveal strat"><div class="ic"><svg><use href="#i-target"/></svg></div><h3>Strategy</h3><ul><li>3 M's prioritization (Mission, Men, Me)</li><li>Market and competitive analysis</li><li>Business model design (Lean Canvas)</li><li>Go-to-market planning</li><li>Pricing strategy</li><li>OKRs and goal setting</li><li>Prioritization frameworks (RICE, MoSCoW)</li><li>SWOT and Porter's Five Forces</li></ul></div>
       <div class="panel skill reveal"><div class="ic"><svg><use href="#i-layers"/></svg></div><h3>Product</h3><ul><li>Product discovery</li><li>User interviews</li><li>PRDs &amp; requirements</li><li>Prioritization</li><li>Roadmapping</li></ul></div>
       <div class="panel skill reveal"><div class="ic"><svg><use href="#i-sprint"/></svg></div><h3>Agile</h3><ul><li>Scrum framework</li><li>Backlog management</li><li>User stories &amp; acceptance criteria</li><li>Sprint events</li></ul></div>
       <div class="panel skill reveal"><div class="ic"><svg><use href="#i-cpu"/></svg></div><h3>Technical</h3><ul><li>AI-assisted prototyping</li><li>Coding with AI agents</li><li>LLM response evaluation</li><li>Netlify deployment</li></ul></div>
@@ -636,6 +665,7 @@
       <div class="cert reveal"><div class="seal">B.S.</div><div><b>B.S., Family and Human Development</b><span>Arizona State University, cum laude, 2018</span></div></div>
       <div class="cert reveal"><img class="badge-img" src="cspo-badge.png" alt="Scrum Alliance Certified Scrum Product Owner badge" width="64" height="64"><div><b>CSPO &amp; Scrum Master</b><span>Scrum Alliance certified</span></div></div>
     </div>
+    <div class="panel reveal mba"><h3>MBA coursework, WGU</h3><div class="chips"><span>Managing Organizations and Leading People</span><span>Managing Human Capital</span><span>Management Communication</span><span>Ethical Leadership</span><span>Data-Driven Decision Making</span><span>Global Economics for Managers</span><span>Marketing</span><span>Accounting for Decision Makers</span><span>Financial Management</span><span>Operations Management</span><span>MBA Capstone</span></div></div>
   </section>
 
   <!-- FAQ -->
