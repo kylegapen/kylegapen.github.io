@@ -113,6 +113,15 @@
   .who b{display:block;font-size:1.55rem;font-weight:800;letter-spacing:-.02em;line-height:1.2}
   .who span{font-family:"JetBrains Mono",monospace;font-size:.74rem;letter-spacing:.08em;color:var(--accent2)}
   .badge-img{flex:none;width:64px;height:64px}
+  @media (min-width:761px){
+    .hero{grid-template-columns:1fr 1.05fr;gap:48px}
+    .term pre{font-size:.98rem;padding:26px 30px;min-height:0}
+    .who{padding:28px 30px 4px;gap:20px}
+    .who img{width:104px;height:104px}
+    .who b{font-size:2.1rem}
+    .who span{font-size:.86rem}
+    .hud-tag{font-size:.76rem}
+  }
   /* Marquee */
   .marquee{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(17,19,23,.6);overflow:hidden;margin-bottom:80px}
   .marquee .track{display:flex;gap:46px;width:max-content;padding:18px 0;animation:scroll 38s linear infinite}
@@ -256,6 +265,13 @@
   .wcard.compact dd{font-size:.86rem}
   .wcard.compact .board{grid-template-columns:repeat(3,52px)}
   .wcard.compact .board div{height:32px}
+  .metric.proto{color:#f5b041}
+  .gid{width:260px}
+  .gbar{display:grid;grid-template-columns:58px 1fr 22px;align-items:center;gap:8px;margin-bottom:7px;font-size:.62rem;color:var(--muted)}
+  .gbar em{font-style:normal}
+  .gbar i{height:6px;border-radius:9px;background:#1d2026;overflow:hidden}
+  .gbar i b{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .gbar s{text-decoration:none;color:var(--text);font-family:"JetBrains Mono",monospace;font-size:.6rem;text-align:right}
   /* Skills */
   .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   .skill .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;margin-bottom:16px;background:linear-gradient(140deg,rgba(229,56,59,.18),rgba(229,56,59,.04));border:1px solid rgba(229,56,59,.25);color:var(--accent2)}
@@ -404,9 +420,9 @@
       <div class="links" id="links">
         <a href="#about">About</a>
         <a href="#faq">FAQ</a>
+        <a href="#education">Education</a>
         <a href="#experience">Experience</a>
         <a href="#work">Work</a>
-        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </div>
       <a class="btn primary" href="resume.pdf" target="_blank"><svg><use href="#i-down"/></svg> Résumé</a>
@@ -441,7 +457,7 @@
 
     <div class="hud reveal">
       <div class="term">
-        <div class="bar"><b></b><b></b><b></b><span>~/kyle/profile.sh</span></div>
+        <div class="bar"><b></b><b></b><b></b></div>
         <div class="who"><img src="headshot.jpg" alt="Kyle Gapen headshot" width="76" height="76"><div><b>Kyle Gapen</b><span>Product Manager · CSPO</span></div></div>
         <pre id="term"></pre>
       </div>
@@ -509,12 +525,27 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="sec-head reveal">
+      <div><div class="mono">03 / Education</div><h2>Education &amp; certifications</h2></div>
+      <p>The degrees and credentials behind the work.</p>
+      <div class="sec-num">03</div>
+    </div>
+    <div class="edu">
+      <div class="cert reveal"><div class="seal">MBA</div><div><b>MBA, WGU</b><span>Graduating early 2027</span></div></div>
+      <div class="cert reveal"><div class="seal">B.S.</div><div><b>B.S., Family and Human Development</b><span>Arizona State University, cum laude, 2018</span></div></div>
+      <div class="cert reveal"><img class="badge-img" src="cspo-badge.png" alt="Scrum Alliance Certified Scrum Product Owner badge" width="64" height="64"><div><b>CSPO &amp; Scrum Master</b><span>Scrum Alliance certified</span></div></div>
+    </div>
+    <div class="panel reveal mba"><h3>MBA coursework, WGU</h3><div class="chips"><span>Managing Organizations and Leading People</span><span>Managing Human Capital</span><span>Management Communication</span><span>Ethical Leadership</span><span>Data-Driven Decision Making</span><span>Global Economics for Managers</span><span>Marketing</span><span>Accounting for Decision Makers</span><span>Financial Management</span><span>Operations Management</span><span>MBA Capstone</span></div></div>
+  </section>
+
+    <!-- EXPERIENCE -->
   <section id="experience">
     <div class="sec-head reveal">
-      <div><div class="mono">03 / Experience</div><h2>Where I've served</h2></div>
+      <div><div class="mono">04 / Experience</div><h2>Where I've served</h2></div>
       <p>Leadership, training, and analysis across three very different teams.</p>
-      <div class="sec-num">03</div>
+      <div class="sec-num">04</div>
     </div>
     <div class="timeline">
       <div class="job current panel reveal" data-n="01">
@@ -567,9 +598,9 @@
   <!-- WORK -->
   <section id="work">
     <div class="sec-head reveal">
-      <div><div class="mono">04 / Selected work</div><h2>Things I've built &amp; scoped</h2></div>
-      <p>A live product with its case study and PRD, a product teardown, and a daily practice habit.</p>
-      <div class="sec-num">04</div>
+      <div><div class="mono">05 / Selected work</div><h2>Things I've built &amp; scoped</h2></div>
+      <p>A live product with its case study and PRD, a product teardown, and a prototype in development.</p>
+      <div class="sec-num">05</div>
     </div>
     <div class="work">
       <article class="wcard reveal">
@@ -631,41 +662,28 @@
 
       <article class="wcard reveal">
         <div class="visual">
-          <div class="viz"><div class="board"><div></div><div class="hi"></div><div></div><div></div><div></div><div class="hi"></div></div></div>
+          <div class="viz">
+            <div class="rpt gid">
+              <div class="rpt-h">GIDEON OPS <span>READINESS</span></div>
+              <div class="gbar"><em>Physical</em><i><b style="width:82%"></b></i><s>82</s></div>
+              <div class="gbar"><em>Mental</em><i><b style="width:74%"></b></i><s>74</s></div>
+              <div class="gbar"><em>Academy</em><i><b style="width:61%"></b></i><s>61</s></div>
+              <div class="rpt-r ok"><i>✓</i>FTO daily observation report</div>
+            </div>
+          </div>
         </div>
         <div class="body">
-          <div class="metric"><i></i>Daily practice</div>
-          <h3>Product Owner Simulation</h3>
+          <div class="metric proto"><i></i>Prototype in development</div>
+          <h3>Gideon Ops</h3>
           <dl>
-            <dt>What</dt><dd>Daily reps as a Product Owner against simulated stakeholders, grounded in the Scrum Guide.</dd>
-            <dt>Skills</dt><dd>Prioritization, saying no with reasons, user stories, and handling conflicting requests.</dd>
+            <dt>Problem</dt><dd>Agencies need a clear way to track whether applicants are mentally and physically ready for the academy and for the job after graduation, and FTO programs carry heavy paperwork.</dd>
+            <dt>Solution</dt><dd>A platform for agencies to track applicant readiness from application through the academy and into the field, plus an FTO tracking system that manages training paperwork.</dd>
+            <dt>Contribution</dt><dd>Owned it end to end: research, scope, build, brand, and a narrated product film. Builds on the Law Enforcement Readiness Track PRD.</dd>
           </dl>
-          <div class="tags"><span>Scrum</span><span>Stakeholders</span><span>User stories</span></div>
+          <div class="tags"><span>Readiness tracking</span><span>FTO tracking</span><span>Next.js</span><span>Supabase</span><span>English &amp; Spanish</span></div>
         </div>
       </article>
     </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="sec-head reveal">
-      <div><div class="mono">05 / Skills &amp; education</div><h2>The toolkit</h2></div>
-      <p>What I bring to a product team on day one.</p>
-      <div class="sec-num">05</div>
-    </div>
-    <div class="skills">
-      <div class="panel skill reveal strat"><div class="ic"><svg><use href="#i-target"/></svg></div><h3>Strategy</h3><ul><li>3 M's prioritization (Mission, Men, Me)</li><li>Market and competitive analysis</li><li>Business model design (Lean Canvas)</li><li>Go-to-market planning</li><li>Pricing strategy</li><li>OKRs and goal setting</li><li>Prioritization frameworks (RICE, MoSCoW)</li><li>SWOT and Porter's Five Forces</li></ul></div>
-      <div class="panel skill reveal"><div class="ic"><svg><use href="#i-layers"/></svg></div><h3>Product</h3><ul><li>Product discovery</li><li>User interviews</li><li>PRDs &amp; requirements</li><li>Prioritization</li><li>Roadmapping</li></ul></div>
-      <div class="panel skill reveal"><div class="ic"><svg><use href="#i-sprint"/></svg></div><h3>Agile</h3><ul><li>Scrum framework</li><li>Backlog management</li><li>User stories &amp; acceptance criteria</li><li>Sprint events</li></ul></div>
-      <div class="panel skill reveal"><div class="ic"><svg><use href="#i-cpu"/></svg></div><h3>Technical</h3><ul><li>AI-assisted prototyping</li><li>Coding with AI agents</li><li>LLM response evaluation</li><li>Netlify deployment</li></ul></div>
-      <div class="panel skill reveal"><div class="ic"><svg><use href="#i-users"/></svg></div><h3>Leadership</h3><ul><li>Training &amp; coaching</li><li>Instruction (TECC, RAAM)</li><li>Clear written reporting</li><li>Calm under pressure</li></ul></div>
-    </div>
-    <div class="edu">
-      <div class="cert reveal"><div class="seal">MBA</div><div><b>MBA, WGU</b><span>Graduating early 2027</span></div></div>
-      <div class="cert reveal"><div class="seal">B.S.</div><div><b>B.S., Family and Human Development</b><span>Arizona State University, cum laude, 2018</span></div></div>
-      <div class="cert reveal"><img class="badge-img" src="cspo-badge.png" alt="Scrum Alliance Certified Scrum Product Owner badge" width="64" height="64"><div><b>CSPO &amp; Scrum Master</b><span>Scrum Alliance certified</span></div></div>
-    </div>
-    <div class="panel reveal mba"><h3>MBA coursework, WGU</h3><div class="chips"><span>Managing Organizations and Leading People</span><span>Managing Human Capital</span><span>Management Communication</span><span>Ethical Leadership</span><span>Data-Driven Decision Making</span><span>Global Economics for Managers</span><span>Marketing</span><span>Accounting for Decision Makers</span><span>Financial Management</span><span>Operations Management</span><span>MBA Capstone</span></div></div>
   </section>
 
   <!-- FAQ -->
@@ -711,7 +729,6 @@
   const lines = [
     ['k','role     ','v','Product Manager'],
     ['k','         ','v','Assistant / Associate / Junior PM'],
-    ['k','shipped  ','v','Modern Combat Path (live)'],
     ['k','certs    ','v','CSPO, Scrum Master'],
     ['k','edu      ','v','B.S. ASU, MBA WGU 2027'],
     ['k','status   ','ok','available ✓'],
@@ -773,7 +790,7 @@
   // Topographic map + objective trail across the whole page
   (function(){
     const svg=document.getElementById('topo'), NS='http://www.w3.org/2000/svg';
-    const stops=[['#top','START','SP'],['#about','ABOUT','OBJ 01'],['#faq','FAQ','OBJ 02'],['#experience','EXPERIENCE','OBJ 03'],['#work','WORK','OBJ 04'],['#skills','SKILLS','OBJ 05'],['#contact','CONTACT','OBJECTIVE']];
+    const stops=[['#top','START','SP'],['#about','ABOUT','OBJ 01'],['#faq','FAQ','OBJ 02'],['#education','EDUCATION','OBJ 03'],['#experience','EXPERIENCE','OBJ 04'],['#work','WORK','OBJ 05'],['#contact','CONTACT','OBJECTIVE']];
     let samples=[], traveled=null, len=0;
     function rnd(seed){return()=>{seed=(seed*16807)%2147483647;return seed/2147483647}}
     function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);(parent||svg).appendChild(e);return e}
