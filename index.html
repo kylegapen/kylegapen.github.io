@@ -112,7 +112,7 @@
   .who img{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 0 0 5px rgba(168,145,108,.15)}
   .who b{display:block;font-size:1.55rem;font-weight:800;letter-spacing:-.02em;line-height:1.2}
   .who span{font-family:"JetBrains Mono",monospace;font-size:.74rem;letter-spacing:.08em;color:var(--accent2)}
-  .badge-img{flex:none;width:64px;height:64px}
+  .badge-img{flex:none;width:64px;height:64px;object-fit:contain}
   @media (min-width:761px){
     .hero{grid-template-columns:1fr 1.05fr;gap:48px}
     .term pre{font-size:.98rem;padding:26px 30px;min-height:0}
@@ -180,6 +180,7 @@
   .job::before{content:attr(data-n);position:absolute;left:-42px;top:26px;width:28px;height:28px;border-radius:8px;background:var(--bg);border:1.5px solid var(--accent);color:var(--accent2);font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;display:grid;place-items:center}
   .job.current::before{background:var(--accent);color:#fff;box-shadow:0 0 0 5px rgba(168,145,108,.15)}
   .job .top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+  .job-sub{font-size:.86rem;color:var(--muted);margin-top:2px}
   .job .org{display:flex;align-items:center;gap:8px;color:var(--accent2);font-weight:600;font-size:.92rem;margin-bottom:16px}
   .job .org svg{width:15px}
   .date{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--muted);padding:4px 10px;border:1px solid var(--line);border-radius:6px;white-space:nowrap}
@@ -544,7 +545,7 @@
       </div>
       <div class="reveal">
         <details open><summary>How does law enforcement translate to product?</summary><p>Both jobs mean understanding people under pressure, prioritizing with limited time, and documenting decisions early. Every call is like a stakeholder meeting: I assess the situation and clarify what people need and how I can provide it. Knowing my team and the resources at hand is crucial to delivering what the client or stakeholder needs. The real skill is reading between the lines to identify the pain points and blockers they need removed.</p></details>
-        <details><summary>How do you approach business strategy?</summary><p>I start with the mission: what outcome the business needs and who it serves. Then I look at the people it affects, the market and competitors, and what it will cost in time and resources. I would rather validate an idea cheaply before committing to it. The goal is a clear plan the team understands and can carry out without waiting on me.</p><p>For example, before an 11-day, multi-agency event, I walked the grounds with a fire department battalion chief and the RAAM program's officer in charge. The topographic maps we had planned from did not show the true size of the site or the extra routes in and out. I brought that data to event leadership, they approved the change, and we moved from one forward control point to three. That was my lesson in <b style="color:var(--text)">strategy in motion</b>, and I carry it into business: a plan is a starting point. When the ground truth changes, the strategy has to change with it.</p></details>
+        <details><summary>How do you approach business strategy?</summary><p>I start with the mission: what outcome the business needs and who it serves. Then I look at the people it affects, the market and competitors, and what it will cost in time and resources. I would rather validate an idea cheaply before committing to it. The goal is a clear plan the team understands and can carry out without waiting on me.</p><p>For example, before an 11-day, multi-agency event, I walked the grounds with a fire department battalion chief and the Rapid Active Attack Management (RAAM) program's officer in charge. The topographic maps we had planned from did not show the true size of the site or the extra routes in and out. I brought that data to event leadership, they approved the change, and we moved from one forward control point to three. That was my lesson in <b style="color:var(--text)">strategy in motion</b>, and I carry it into business: a plan is a starting point. When the ground truth changes, the strategy has to change with it.</p></details>
         <details><summary>Do you have remote work experience?</summary><p>Yes. I work remotely as a contractor from a dedicated home office, and I'm very comfortable in a remote setting.</p></details>
         <details><summary>What kind of company are you looking for?</summary><p>Small to mid-size tech teams where I can learn fast and own real outcomes.</p></details>
       </div>
@@ -559,8 +560,8 @@
       <div class="sec-num">03</div>
     </div>
     <div class="edu">
-      <div class="cert reveal"><div class="seal">MBA</div><div><b>MBA, WGU</b><span>Graduating early 2027</span></div></div>
-      <div class="cert reveal"><div class="seal">B.S.</div><div><b>B.S., Family and Human Development</b><span>Arizona State University, cum laude, 2018</span></div></div>
+      <div class="cert reveal"><img class="badge-img" src="wgu-logo.png" alt="Western Governors University logo" width="64" height="64"><div><b>MBA, WGU</b><span>Graduating early 2027</span></div></div>
+      <div class="cert reveal"><img class="badge-img" src="asu-logo.png" alt="Arizona State University logo" width="64" height="64"><div><b>B.S., Family and Human Development</b><span>Arizona State University, cum laude, 2018</span></div></div>
       <div class="cert reveal"><img class="badge-img" src="cspo-badge.png" alt="Scrum Alliance Certified Scrum Product Owner badge" width="64" height="64"><div><b>CSPO &amp; Scrum Master</b><span>Scrum Alliance certified</span></div></div>
     </div>
     <div class="panel reveal mba"><h3>MBA coursework, WGU</h3><div class="chips"><span>Managing Organizations and Leading People</span><span>Managing Human Capital</span><span>Management Communication</span><span>Ethical Leadership</span><span>Data-Driven Decision Making</span><span>Global Economics for Managers</span><span>Marketing</span><span>Accounting for Decision Makers</span><span>Financial Management</span><span>Operations Management</span><span>MBA Capstone</span></div></div>
@@ -587,7 +588,7 @@
         <div class="chips"><span>LLM evaluation</span><span>Analysis</span><span>Documentation</span></div>
       </div>
       <div class="job panel reveal" data-n="02">
-        <div class="top"><h3>RAAM Instructor, Active Attack Integration &amp; Command Response</h3><span class="date">JAN 2026 to OCT 2026</span></div>
+        <div class="top"><div><h3>Rapid Active Attack Management (RAAM) Instructor</h3><div class="job-sub">Active Attack Integration &amp; Command Response</div></div><span class="date">JAN 2026 to OCT 2026</span></div>
         <div class="org"><svg><use href="#i-shield"/></svg>San Antonio Police Department</div>
         <ul>
           <li>Joined an early-stage, scrappy department program with minimal standardization; identified inefficiencies in the medical instruction workflow and streamlined the curriculum from 3 hours to 1.5 hours, maintaining all required ALERRT content and improving knowledge retention by creating a tighter, more repeatable delivery process.</li>
